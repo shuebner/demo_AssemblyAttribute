@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <__SomeString>Hello</__SomeString>
+    <__SomeVersion>1.2.3.4</__SomeVersion>
+    <__SomeTimestamp>2022-11-06T12:12:23Z</__SomeTimestamp>
+
+    <__VersionCheckDummy>$([System.Version]::Parse($(__SomeVersion)))</__VersionCheckDummy>
+    <__TimestampCheckDummy>$([System.DateTimeOffset]::Parse($(__SomeTimestamp)))</__TimestampCheckDummy>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <AssemblyAttribute Include="GlobalAttributeDemo.MyMetadataAttribute">
+      <_Parameter1>$(__SomeString)</_Parameter1>
+      <_Parameter2>$(__SomeVersion)</_Parameter2>
+      <_Parameter3>$(__SomeTimestamp)</_Parameter3>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>
